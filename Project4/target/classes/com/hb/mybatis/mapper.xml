@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hb.mybatis.mapper">
+	
+	<select id="totalCount" resultType="int">
+		select count(*) from costomer	
+	</select>	
+	
+	 <!-- <select id="totalCount2" parameterType="com.hb.mybatis.PVO2" resultType="int">
+		select * from purchase where p_day <![CDATA[ > ]]>=#{delivery1} AND p_delivery <![CDATA[ < ]]>= #{delivery2} and p_id = #{p_id2}
+	</select> -->
+	
+	<select id="login" parameterType="com.hb.mybatis.VO" resultType="com.hb.mybatis.VO" >
+		select * from neu where id=#{id} and pwd=#{pwd}
+	</select>	
+	
+	<select id="idchk" parameterType="com.hb.mybatis.VO" resultType="com.hb.mybatis.VO">
+		select * from neu where id = #{id}
+	</select> 
+	
+	<insert id="neu_insert" parameterType="com.hb.mybatis.VO">
+		insert into neu values(neu_seq.nextval,#{id},#{pwd},#{name},#{company},#{pone})
+	</insert>
+	
+	<select id="item_list" resultType="com.hb.mybatis.IVO">
+		select * from items order by idx
+	</select>
+	
+	
+	
+	<select id="oneitem" parameterType="String" resultType="com.hb.mybatis.IVO">
+		select * from items where idx = #{idx}
+	</select>
+	
+	
+	
+	<select id="costomerlist" resultType="com.hb.mybatis.CVO">
+			select * from (
+			select rownum r_num, a.* from (
+				select * from costomer order by c_idx desc
+			) a
+		) where r_num between #{begin} and #{end}	
+	</select>
+	
+	<select id="onecustomerlist" parameterType="com.hb.mybatis.CVO" resultType="com.hb.mybatis.CVO">
+		select * from costomer where c_idx = #{c_idx}
+	</select>
+	
+	 <insert id="customerinsert" parameterType="com.hb.mybatis.CVO">
+		insert into costomer values(costomer_seq.nextval,#{c_subject},#{c_brand},#{c_employee},#{c_content},sysdate)
+	</insert> 
+	
+	<select id="getplusonelist" parameterType="com.hb.mybatis.CVO" resultType="com.hb.mybatis.CVO">
+		select * from costomer where c_idx = #{c_idx}
+	</select>	
+	<update id="customerupdate" parameterType="com.hb.mybatis.CVO">
+		update costomer set c_subject=#{c_subject},c_brand=#{c_brand},c_employee=#{c_employee},c_content=#{c_content} where c_idx=#{c_idx}
+	</update>
+	
+	<delete id="customerdelect" parameterType="String">
+		delete from costomer where c_idx=#{c_idx}
+	</delete>
+	
+	<select id="finditemlist" resultType="com.hb.mybatis.IVO">
+		select * from items order by idx
+	</select>
+	
+	<insert id="purchaseinsert" parameterType="com.hb.mybatis.PVO">
+		insert into purchase values(purchase_seq.nextval,#{p_item},#{p_color},#{p_yd},#{p_delivery},#{p_tran_way},sysdate,#{p_id})
+	</insert>
+	
+	<!-- <select id="one_p_list" resultType="com.hb.mybatis.PVO">
+		select * from (
+			select rownum r_num, a.* from (
+		select * from purchase where p_day <![CDATA[ > ]]>=#{delivery1} AND p_delivery <![CDATA[ < ]]>= #{delivery2} and p_id = #{p_id2}
+		) where r_num between #{begin} and #{end}	
+	</select> -->
+	
+	<select id="one_p_list" parameterType="com.hb.mybatis.PVO2" resultType="com.hb.mybatis.PVO" >
+	select * from purchase where p_day <![CDATA[ > ]]>=#{delivery1} AND p_delivery <![CDATA[ < ]]>= #{delivery2} and p_id = #{p_id2}		
+	</select>
+	
+	<insert id="admin_item_insert" parameterType="com.hb.mybatis.IVO">
+		insert into items values(items_seq.nextval,#{img},#{name1},#{name2},#{weight},#{product},#{content})
+	</insert>
+	
+	<select id="admin_item_update" parameterType="String" resultType="com.hb.mybatis.IVO">
+		select * from items where idx = #{idx}
+	</select>
+	
+	<update id="admin_item_update_ok" parameterType="com.hb.mybatis.IVO">
+		update items set img=#{img},name1=#{name1},name2=#{name2},weight=#{weight},product=#{product},content=#{content} where idx = #{idx}
+	</update>
+	
+	<insert id="insert_item_page" parameterType="com.hb.mybatis.PVO">
+		insert into item_package values(item_package_seq.nextval,)
+	</insert>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

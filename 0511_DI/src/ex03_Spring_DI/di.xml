@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="myProduct" class="ex03_Spring_DI.MyProduct" />
+	<bean id="myProcess" class="ex03_Spring_DI.MyProcess" autowire="byName">
+		<property name="p_name" value="마우스" />	
+		<property name="dan" value="30000" />	
+		<property name="su" value="17" />
+	</bean>
+</beans>

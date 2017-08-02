@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+	<bean id="boy" class="ex03.Boy" />
+	<bean id="girl" class="ex03.Girl" />
+	<bean id="myAspect" class="ex03.MyAspect" />
+	
+	<!-- AOP : 네임스페이스에서 추가 -->
+	<aop:config>
+		<!-- aspect ; 어느지점에, 무엇을, 어떻게, DI 할 것이지 지정 -->
+		<aop:aspect ref="myAspect">
+			<!--어느지점인지 표시 (핵심관심사가 어느 메소드인지 표시)  -->
+			<aop:pointcut expression="execution(* something())" id="myPointCut"/>
+			<!-- 무엇을 어떻게  -->
+			     <aop:before method="before" pointcut-ref="myPointCut"/>
+				 <aop:after-returning method="after_returning" pointcut-ref="myPointCut"/> 
+				 <aop:after method="after" pointcut-ref="myPointCut"/>
+				<!-- <aop:around method="around" pointcut-ref="myPointCut"/> -->
+		</aop:aspect>
+	</aop:config>
+</beans>
+

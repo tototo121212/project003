@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="oracle" class="ex02_Spring_DI.OracleDao" />
+	<bean id="mysql" class="ex02_Spring_DI.MySqlDao" />
+	
+	<!-- <bean id="service" class="ex02_Spring_DI.ServiceImp">
+		<property name="dao" ref="oracle" />
+	</bean> -->
+	
+	<bean id="service" class="ex02_Spring_DI.ServiceImp">
+		<constructor-arg ref="mysql"/>	
+	</bean>
+
+</beans>

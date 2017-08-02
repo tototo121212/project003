@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 1. 생성자 이용
+	<bean id="my1" class="ex01_Spring_DI.MyProcess">
+		<constructor-arg value="희동이"/>
+		<constructor-arg value="19"/>
+	</bean>
+	 -->
+	 <!-- 2. setter이용 -->
+	 <bean id="my1" class="ex01_Spring_DI.MyProcess">
+		<property name="name" value="깡통로봇" />
+		<property name="age">
+			<value>14</value>
+		</property>
+	</bean>
+</beans>

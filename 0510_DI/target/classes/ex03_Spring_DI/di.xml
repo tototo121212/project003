@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 자동엮기 : Autowiring 
+	    변수의 이름 = 참조아이디 -->
+   <bean id="dao" class="ex03_Spring_DI.OracleDao" />
+   <bean id="dao1" class="ex03_Spring_DI.MySqlDao" />
+
+   <bean id="service" class="ex03_Spring_DI.ServiceImp" autowire="byName" />
+		   
+	
+	<!--2-2. 생성자 이용 -->
+	<!-- 
+	<bean id="service" class="ex03_Spring_DI.ServiceImp" autowire="byName" >
+		
+	</bean> -->  
+</beans>
+
+
+
+
+
+
+
+
+
+

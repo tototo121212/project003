@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <!-- 1. Bean객체 생성 -->
+  <!-- OracleDao dao = new OracleDao() -->
+  <!-- <bean id="호출이름" class="해당 클래스위치" /> -->
+   <bean id="oracle" class="ex02_Spring_DI.OracleDao" />
+   <bean id="mysql" class="ex02_Spring_DI.MySqlDao" />
+   
+   <!--2. 주입(DI): setter, 생성자를 이용해서  -->
+   <!-- 2-1. setter이용 -->
+   	<!-- ServiceImp imp = new ServiceImp();
+	    imp.setDao(dao); -->
+	<!-- property는 set변수를 뜻한다. valuet="실제값", ref="참조값"--> 
+	<!-- 
+	  <bean id="service" class="ex02_Spring_DI.ServiceImp">
+		<property name="dao" ref="oracle" />
+	  </bean>   
+	  -->
+	<!--2-2. 생성자 이용 -->
+	<bean id="service" class="ex02_Spring_DI.ServiceImp">
+		<constructor-arg ref="oracle" />
+	</bean>  
+</beans>
+
+
+
+
+
+
+
+
+
+

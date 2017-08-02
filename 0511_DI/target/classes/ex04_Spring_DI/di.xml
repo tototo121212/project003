@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 리스트 DI -->
+	<bean id="list" class="ex04_Spring_DI.ListPrn">
+		<property name="list">
+			<list>
+				<value>100</value>
+				<value>200</value>
+				<value>300</value>
+				<value>400</value>
+			</list>
+		</property>	
+		<property name="list2">
+			<list>
+				<value>100</value>
+				<value>200</value>
+				<value>300</value>
+				<value>400</value>
+			</list>
+		</property>			
+	</bean>
+	<bean id="list2" class="ex04_Spring_DI.ArrayPrn">
+		<property name="arr">
+			<list>
+				<value>100</value>
+				<value>200</value>
+				<value>300</value>
+				<value>400</value>
+			</list>
+		</property>	
+		<property name="arr2">
+			<list>
+				<value>100</value>
+				<value>200</value>
+				<value>300</value>
+				<value>400</value>
+			</list>
+		</property>			
+	</bean>
+	<bean id="set" class="ex04_Spring_DI.SetPrn">
+		<property name="set">
+			<set>
+				<value>100</value>
+				<value>200</value>
+				<value>300</value>
+				<value>400</value>
+			</set>
+		</property>	
+		<property name="set2">
+			<set>
+				<value>100</value>
+				<value>200</value>
+				<value>300</value>
+				<value>400</value>
+			</set>
+		</property>			
+	</bean>
+	<bean id="map" class="ex04_Spring_DI.MapPrn">
+		<property name="map1">
+			<map>
+				<entry key="0" value="삼장법사" />
+				<entry key="1" value="손오공" />
+				<entry key="2" value="저팔계" />
+				<entry key="3" value="사오정" />
+			</map>
+		</property>
+		<property name="map2">
+			<map>
+				<entry key="이수근" value="삼장법사" />
+				<entry key="은지원" value="손오공" />
+				<entry key="강호동" value="저팔계" />
+				<entry key="이승기" value="사오정" />
+			</map>
+		</property>
+	</bean>
+</beans>
+
+
+
+
+
+
+
+

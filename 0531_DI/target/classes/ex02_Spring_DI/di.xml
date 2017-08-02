@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	
+	<context:annotation-config />
+	<context:component-scan base-package="ex02_Spring_DI" />
+
+	<bean id="my1" class="ex02_Spring_DI.MyProcess">
+		<constructor-arg value="목캔디" />
+		<constructor-arg value="650321" />
+	</bean>
+	
+	<bean id="my2" class="ex02_Spring_DI.MyProcess">
+		<property name="name" value="콜라" />
+		<property name="jumin">
+			<value>450402</value>
+		</property>
+	</bean>
+</beans>

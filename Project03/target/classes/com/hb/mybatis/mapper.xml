@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hb.mybatis.mapper">
+	<select id="totalCount" resultType="int">
+		select count(*) from costomer	
+	</select>	
+	<insert id="insert" parameterType="com.hb.mybatis.VO">
+		insert into neu values(idx_seq.nextval, #{id}, #{pwd}, #{name}, #{company}, #{pone})
+	</insert>
+	<select id="login" parameterType="com.hb.mybatis.VO" resultType="com.hb.mybatis.VO">
+		select * from neu where id = #{id} and pwd = #{pwd}
+	</select>
+	
+	<select id="chk" parameterType="String" resultType="com.hb.mybatis.VO">
+	 	select * from neu where id =#{id}
+	</select>
+	
+	<select id="itemlist" resultType="com.hb.mybatis.IVO">
+		select * from items order by idx
+	</select>
+	<select id="oneitem" parameterType="String" resultType="com.hb.mybatis.IVO">
+		select * from items where idx = #{idx}
+	</select>
+	<select id="brandlist" resultType="com.hb.mybatis.BVO">
+		select * from brands
+	</select>
+	<select id="costomlist" resultType="com.hb.mybatis.CVO">
+		select * from (
+			select rownum r_num, a.* from (
+				select * from costomer order by c_idx desc
+			) a
+		) where r_num between #{begin} and #{end}			
+	</select>
+	<select id="onecostomlist" parameterType="String" resultType="com.hb.mybatis.CVO">
+		select * from costomer where c_idx = #{c_idx}
+	</select>
+	<update id="update" parameterType="com.hb.mybatis.CVO">
+		update costomer set c_subject=#{c_subject}, c_brand=#{c_brand},
+		 c_employee=#{c_employee}, c_content=#{c_content} where c_idx = #{c_idx} 
+	</update>
+  	<insert id="insert01" parameterType="com.hb.mybatis.CVO">
+		insert into costomer values(costomer_seq.nextval,#{c_subject},#{c_brand},#{c_employee},#{c_content},sysdate)
+	</insert>  
+ 	 
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

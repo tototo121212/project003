@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+	
+	<!-- MVC패턴에서 Controller 역할 하는 디스패쳐서블릿이다. -->
+    <!-- 1. HandlerMapping :  요청을 받아서 요청에 따라 해당 Controller를 지정해 주는 역할 -->
+    <!-- 기존적으로 생략한다. -->
+    <beans:bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"></beans:bean>   
+
+     <!-- 2. Controller(비즈니스코딩하는 곳을 지정) 결과는 ModelAndView로 되돌아온다.-->
+     <beans:bean name="/" class="com.hb.test.InputController" />
+     <beans:bean name="/index.do" class="com.hb.test.IndexController" />
+     <beans:bean name="/start.do" class="com.hb.test.StartController" />
+     
+     <!--3. ViewResolver : 어떤 뷰를 설정할 지 결정  -->
+     <!-- 컨틀로러에서 되돌아온 뷰이름에 접두사와 접미사를 붙이면 
+          실제 뷰가 완성되어 실제뷰로 페이지 이동(포워드)한다. -->
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+</beans:beans>
+
+
+
+
+
+
+
+
+
+
